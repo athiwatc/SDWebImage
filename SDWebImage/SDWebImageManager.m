@@ -52,7 +52,7 @@
 }
 
 - (NSString *)cacheKeyForURL:(NSURL *)url {
-    return [[[NSURL alloc] initWithScheme:url.scheme host:url.host path:url.path] absolutestring]
+    return [[[NSURL alloc] initWithScheme:url.scheme host:url.host path:url.path] absolutestring];
 }
 
 - (BOOL)cachedImageExistsForURL:(NSURL *)url {
