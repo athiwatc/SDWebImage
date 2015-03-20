@@ -185,7 +185,9 @@ BOOL ImageDataHasPNGPreffix(NSData *data) {
                     [_fileManager createDirectoryAtPath:_diskCachePath withIntermediateDirectories:YES attributes:nil error:NULL];
                 }
 
-                [_fileManager createFileAtPath:[self defaultCachePathForKey:key] contents:data attributes:nil];
+                if (![_fileManager createFileAtPath:[self defaultCachePathForKey:key] contents:data attributes:nil]) {
+                    [[[UIAlertView alloc] initWithTitle:@"Unable to persist stickers" message:@"Disk space is full. Downloaded sticker might not persisted. Please free up your disk space." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                }
             }
         });
     }
